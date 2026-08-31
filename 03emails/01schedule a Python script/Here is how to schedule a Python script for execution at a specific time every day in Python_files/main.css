@@ -1,0 +1,32 @@
+.verdhe {
+  color: #9a40f7;
+}
+
+.verdhe-erret {
+  color: #ec971f;
+}
+
+.gri {
+  color: #d3d3d3;
+}
+
+.breadcrumb {
+  background-color: #fff;
+  padding-bottom: -10px;
+  padding-top: -15px;
+  margin: -10px;
+}
+
+.breadcrumb .a {
+  color: #e0ac0d;
+}
+
+a {
+  color: #d49e20;
+}
+
+a:hover,
+a:active,
+a:focus :not(button) {
+  color: #f57056;
+}

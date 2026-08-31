@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://pythonhow.com/how/schedule-a-python-script-for-execution-at-a-specific-time-every-day/ -->
+<html xmlns="http://www.w3.org/1999/html"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> Here is how to schedule a Python script for execution at a specific time every day in Python</title>
+<link rel="apple-touch-icon" sizes="180x180" href="https://pythonhow.com/static/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://pythonhow.com/static/img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://pythonhow.com/static/img/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://pythonhow.com/static/img/favicon/site.webmanifest">
+<link rel="mask-icon" href="https://pythonhow.com/static/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://pythonhow.com/static/img/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/static/img/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+    <link href="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/css" rel="stylesheet">
+
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- For accordions -->
+    <script src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/jquery.min.js.download"></script>
+
+    <script src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/bootstrap.min.js.download"></script>
+
+    <link ref="stylesheet" href="https://pythonhow.com/static/ajax-live-search/css/ajaxlivesearch.min.css">
+
+    <script src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/lodash.min.js.download"></script>
+    <script src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/main.js.download"></script>
+
+    <link rel="stylesheet" href="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/main.css">
+    <link rel="stylesheet" href="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/main(1).css">
+    <link rel="stylesheet" type="text/css" href="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/prettify.css">
+    <script type="text/javascript" src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/prettify.js.download"></script>
+  </head>
+<body onload="PR.prettyPrint()">
+    <!-- ActiveSkill Top Banner -->
+    <div id="activeskill-banner" style="background: linear-gradient(90deg, #3398e1 0%, #1a6fb5 100%); text-align: center; padding: 10px 16px; font-size: 15px; color: #fff; position: relative;">
+      <a href="https://www.activeskill.dev/" target="_blank" rel="noopener" style="color: #fff; text-decoration: none;">
+        <strong>New:</strong> Practice Python, JavaScript &amp; SQL with AI feedback — <span style="text-decoration: underline;">Try ActiveSkill free →</span>
+      </a>
+      <button onclick="document.getElementById(&#39;activeskill-banner&#39;).style.display=&#39;none&#39;;" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; opacity: 0.7; padding: 0 4px;" aria-label="Close banner">×</button>
+    </div>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        font-size: 17px;
+        background-color: #fdfdfd;
+        min-height: 110vh;
+        position: relative;
+        color: #4d4c4c;
+      }
+
+      .shadow {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+      }
+      .btn-danger {
+        color: #fff;
+        background-color: #f00000;
+        border-color: #dc281e;
+      }
+
+      .masthead {
+        background: #3398e1;
+        height: auto;
+        padding-bottom: 3px;
+        box-shadow: 0 16px 48px #e3e7eb;
+        padding-top: 3px;
+      }
+      .ls_container {
+        width: 100%;
+      }
+      #search-container.results {
+        background-color: #fff;
+      }
+      #search-results {
+        display: none;
+        opacity: 0;
+        top: 50px;
+        z-index: 10;
+      }
+      #search-results.active {
+        transition: all;
+        display: block;
+        opacity: 1;
+      }
+      #search-results li.selected{
+          background-color: #e5e5e5 !important;
+      }
+    </style>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" id="mainNav">
+      <a class="navbar-brand pl-3" style="margin-left: -20px" href="https://pythonhow.com/">
+        <img src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/pythonhow_logo.svg" width="40">
+        <img src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/pythonhow-django-made.png" width="165">
+      </a>
+      <h5 class="site-heading my-10 text-secondary" style="margin-left: 4px"></h5>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/">
+              Blog
+            </a>
+          </li>
+
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/video-course/">
+              Videos
+            </a>
+          </li>
+
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/python-tutorial/">
+              Tutorials
+            </a>
+          </li>
+
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/practice/">
+              Practice Python
+            </a>
+          </li>
+
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/python-paid-course/">
+              Courses
+            </a>
+          </li>
+
+            <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/dpp-substack">
+              Python Projects
+            </a>
+          </li>
+<!--          <li class="nav-item text-black">-->
+<!--            <a-->
+<!--              class="nav-link text-black font-weight-bold "-->
+<!--              href="/chatbot/"-->
+<!--            >-->
+<!--              <img-->
+<!--                src="/static/img/chatbot.svg"-->
+<!--                class="pb-1"-->
+<!--                width="20"-->
+<!--              />Chatbot-->
+<!--            </a>-->
+<!--          </li>-->
+
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/python-shell">
+              <img src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/python_shell.svg" width="18">Python Shell
+            </a>
+          </li>
+
+<!--          <li class="nav-item text-black">-->
+<!--            <a-->
+<!--              class="nav-link text-black font-weight-bold "-->
+<!--              href="/python-pathways"-->
+<!--            >-->
+<!--              <img-->
+<!--                src="/static/img/stairs.svg"-->
+<!--                class="pb-1 pt-1"-->
+<!--                width="16"-->
+<!--              />Stairway to Python-->
+<!--            </a>-->
+<!--          </li>-->
+          <li class="nav-item text-black">
+            <a class="nav-link text-black font-weight-bold " href="https://pythonhow.com/about-us">
+              About Us
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+    
+    
+    
+    
+
+    <div class="breadcrumbs container">
+        <div class="row">
+            <div class="col-md-8 left">
+                <ul class="breadcrumb">
+    
+        <li>
+            
+                <a href="https://pythonhow.com/">Home</a>
+            
+            
+                <span class="divider">/</span>
+            
+        </li>
+    
+        <li>
+            
+                <a href="https://pythonhow.com/how">How</a>
+            
+            
+                <span class="divider">/</span>
+            
+        </li>
+    
+        <li>
+            
+                schedule a Python script for execution at a specific time every day
+            
+            
+        </li>
+    
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+    
+    
+    
+
+
+<style>
+.card-content-container {
+    display: block;
+    width: 100%;
+    overflow: hidden; /* Hide content that goes outside the boundaries */
+}
+
+.card-content-container img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline spacing issues */
+    margin: 0 auto; /* Center images if desired */
+}
+</style>
+
+<div class="container">
+  <div class="row">
+
+<!--	  A search box to search for other HowQuestion posts-->
+		<div class="search-container position-relative col-md-8 p-0" id="search-container">
+	  		<input id="search-input" class="form-control mb-0 left  top" type="text" placeholder="Explore more questions..." aria-label="Search">
+    		<div class="results position-absolute bg-white p-2 rounded w-100 border" id="search-results"></div>
+		</div>
+
+<!--	  The entire question-code-explanation body of HowQuestions-->
+    <div class="card col-md-8 mb-4 mt-2 left top">
+      <div class="card-body">
+        <h1> <span style="color:#D3D3D3" ;=""> Here is how to </span> schedule a Python script for execution at a specific time every day  <span style="color:#D3D3D3" ;=""> in Python. </span> </h1>
+		  <hr style="border-color:#f0ad4e"> <!-- TODO Make in Python in grey too -->
+
+
+		  
+		  <samp><p>While you can schedule a Python program to be executed at a specific time every day on your local computer, &nbsp;you will need to have the computer running 24/7, so this soon becomes impractical. And that is one of the reasons why servers exists. An easy and free way to execute Python scripts automatically every day is to use PythonAnywhere servers. Here are the steps:</p><p>1. Create a free account on <a href="https://www.pythonanywhere.com/" target="_blank">https://www.pythonanywhere.com</a> and log in.</p><p>2. Go to the <span style="color: rgb(156, 156, 148);">Files</span> menu on PythonAnywhere and upload your Python script.</p><p>3. Go to the <span style="color: rgb(156, 156, 148);">Tasks</span> menu.</p><p>4. &nbsp;Enter the time you want the Python script to be executed in the time field. The time should be in the UTC system.</p><p>5. Enter <span style="color: rgb(156, 156, 148);">python /home/username/script.py</span> in the field next to the time field. That is the command that PythonAnywhere will run at the given time and it points to the location where you uploaded your Python script. Note that you need to change <span style="color: rgb(156, 156, 148);">username</span> with your actual PythonAnywhere username and <span style="color: rgb(156, 156, 148);">script.py</span> with the name of the Python script you uploaded in step 2.&nbsp;</p><p><br></p><p>6. Press the <span style="color: rgb(156, 156, 148);">Create</span> button. Your script will now be executed every day at the time you specified.</p> </samp>
+		  
+		<div id="all-code">
+		  
+		  
+		  
+		</div>
+
+
+
+		  <!--		  Accordion that reveals an interactive embedded Python shell-->
+		  
+
+		  <hr style="border-color:#f0ad4e">
+		  <div style="margin-left:5px;">
+		  	<div style="color:#D3D3D3" class="h5">Output</div>
+			
+			<div class="card-content-container">
+				<samp style="font-size:15px;">
+					<p>&nbsp;</p>
+				</samp>
+			</div>
+			
+
+		  	<hr style="border-color:#f0ad4e">
+
+
+
+				  <div style="color:#D3D3D3" class="h5">Explanation</div>
+			   <p>&nbsp;</p> <p></p>
+		  </div>
+		  	<hr style="border-color:#f0ad4e">
+
+		      <div class="activeskill-cta" style="margin: 24px 0; padding: 20px 24px; background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%); border-left: 4px solid #3398e1; border-radius: 8px;">
+    <p style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700; color: #1a1a1a;">Practice what you just learned</p>
+    <p style="margin: 0 0 14px 0; font-size: 15px; color: #4d4c4c;">Solve Python exercises and get instant AI feedback on your solutions.</p>
+    <a href="https://activeskill.dev/" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 22px; background-color: #3398e1; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 15px;">Try ActiveSkill for Free →</a>
+</div>
+
+
+		      
+			  
+<div class="card-body">
+    <iframe src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/embed.html" width="100%" height="250" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+			  
+
+		  <!--Show relevant HowQuestions depending on tags-->
+		  
+		  <hr style="border-color:#f0ad4e">
+		  <div style="color:#D3D3D3" class="h5">Related HowTos</div>
+		  <div class="">
+            
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/use-the-polars-library/">Use the polars library</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/use-selenium-to-browse-a-page/">Use Selenium to browse a page</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/load-json-data-in-python/">Load JSON data</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/build-a-gui-with-freesimplegui/">Build a GUI with FreeSimpleGUI</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/delete-a-directory/">Delete a directory</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/delete-a-file/">Delete a file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-matplotlib-graphs/">Create matplotlib graphs</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/rename-a-file/">Rename a file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-todays-date-and-convert-to-string/">Get today's date and convert to string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-a-text-file-with-and-write-text-on-it/">Create a text file and write text on it</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/read-a-text-file-with-python/">Read a text file with Python</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/scrape-a-wikipedia-page/">Scrape a Wikipedia page</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/install-dependencies/">Install dependencies</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/flush-the-output-of-the-print-function/">Flush the output of the print function</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/prettyprint-a-json-file/">Prettyprint a JSON file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-a-dictionary-with-list-comprehension/">Create a dictionary with list comprehension</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/select-multiple-columns-in-a-pandas-dataframe/">Select multiple columns in a Pandas dataframe</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/profile-a-script/">Profile a script</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/how-to-reverse-a-string-in-python/">Reverse a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/convert-two-lists-into-a-dictionary/">Convert two lists into a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/to-convert-an-integer-into-a-string/">Convert an integer into a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/generate-random-strings-with-upper-case-letters-and-digits/">Generate random strings with upper case letters and digits</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/extract-extension-from-filename/">Extract extension from filename</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/print-to-stderr-in-python/">Print to stderr in Python</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/generate-random-integers-between-0-and-9/">Generate random integers between 0 and 9</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/to-use-a-pythonic-way-to-create-a-long-multi-line-string/">Use a pythonic way to create a long multi-line string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/measure-elapsed-time-in-python/">Measure elapsed time in Python</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/install-specific-package-versions-with-pip/">Install specific package versions with pip</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/read-from-stdin-standard-input/">Read from stdin (standard input)</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-the-class-name-of-an-instance/">Get the class name of an instance</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-string-is-empty/">Check if a string is empty</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/pad-zeroes-to-a-string/">Pad zeroes to a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/delete-an-element-from-a-dictionary/">Delete an element from a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-string-is-a-float/">Check if a string is a float</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/count-the-occurrences-of-an-item-in-a-list/">Count the occurrences of an item in a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/remove-an-element-from-a-list-by-index/">Remove an element from a list by index</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/use-static-methods-in-python/">Use static methods</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/remove-a-trailing-newline/">Remove a trailing newline</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/print-literal-curly-brace-characters-in-a-string-and-also-use-dotformat-on-it/">Print literal curly-brace characters in a string and also use .format on it</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/exitdeactivate-a-virtualenv/">Exit/deactivate a virtualenv</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/determine-the-type-of-an-object/">Determine the type of an object</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/limit-floats-to-two-decimal-points/">Limit floats to two decimal points</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/know-if-an-object-has-an-attribute/">Know if an object has an attribute</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/select-an-item-from-a-list-randomly/">Select an item from a list randomly</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/read-a-file-line-by-line-into-a-list/">Read a file line-by-line into a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/call-a-function-of-a-module-by-using-its-name/">Call a function of a module by using its name</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-the-number-of-elements-in-a-list/">Get the number of elements in a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/print-without-a-newline-or-space-in-python/">Print without a newline or space</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/sort-a-list-of-dictionaries-by-a-value-of-the-dictionary/">Sort a list of dictionaries by a value of the dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/remove-a-key-from-dictionary/">Remove a key from dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/rename-column-names-with-pandas/">Rename column names with Pandas</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/lowercase-a-string/">Lowercase a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/upgrade-all-python-packages-with-pip/">Upgrade all Python packages with pip</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/how-do-i/">Get a substring of a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-the-last-element-of-a-list/">Get the last element of a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/parse-a-string-to-a-float-or-integer/">Parse a string to a float or integer</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/convert-a-string-into-datetime-format/">Convert a string into datetime format</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/access-environment-variable-values/">Access environment variable values</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/print-coloured-text-on-the-terminal/">Print coloured text on the terminal</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/find-current-directory-of-a-file/">Find current directory of a file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/change-the-size-of-figures-drawn-with-matplotlib/">Change the size of figures drawn with Matplotlib</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/manually-raise-an-exception/">Manually raise an exception</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/delete-a-file-or-folder/">Delete a file or folder</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/split-a-list-into-evenly-sized-parts/">Split a list into evenly sized parts</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/select-rows-from-a-dataframe-based-on-column-values-with-pandas/">Select rows from a DataFrame based on column values with Pandas</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/install-pip-on-windows/">Install pip on Windows</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-given-key-already-exists-in-a-dictionary/">Check if a given key already exists in a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/iterate-over-rows-in-a-dataframe-for-pandas/">Iterate over rows in a DataFrame for Pandas</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/make-function-decorators-and-chain-them-together/">Make function decorators and chain them together</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/pass-a-variable-by-reference/">Pass a variable by reference</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/make-a-time-delay/">Make a time delay</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/convert-bytes-to-a-string/">Convert bytes to a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/copy-a-file/">Copy a file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/concatenate-two-lists/">Concatenate two lists</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/add-new-keys-to-a-dictionary/">Add new keys to a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/catch-multiple-exceptions-in-a-single-except-block/">Catch multiple exceptions in a single 'except' block</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-list-is-empty/">Check if a list is empty</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-the-current-time/">Get the current time</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/sort-a-dictionary-by-value/">Sort a dictionary by value</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/use-global-variables-in-a-function/">Use global variables in a function</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/list-all-files-of-a-directory/">List all files of a directory</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/iterate-over-dictionaries-using-for-loops/">Iterate over dictionaries using for loops</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-string-contains-a-substring/">Check if a string contains a substring</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/find-the-index-of-an-item-in-a-list/">Find the index of an item in a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/understand-how-slice-notation-works/">Understand how slice notation works</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/make-a-flat-list-out-of-a-list-of-lists/">Make a flat list out of a list of lists</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/accesses-the-index-in-for-loops/">Accesses the index in for loops</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/safely-create-a-nested-directory/">Safely create a nested directory</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/merge-two-dictionaries-in-a-single-expression/">Merge two dictionaries in a single expression</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-whether-a-file-exists-without-exceptions/">Check whether a file exists without exceptions</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/convert-a-dictionary-into-a-list/">Convert a dictionary into a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/convert-a-list-into-a-dictionary/">Convert a list into a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/duplicate-a-file/">Duplicate a file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/append-text-in-a-text-file/">Append text in a text file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/use-for-loops/">Use for loops</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/deploy-a-web-app-to-heroku/">Deploy a web app to Heroku</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/store-python-passwords-securely-on-windows-mac-and-linux/">Store Python passwords securely on Windows, Mac, and Linux</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/do-dictionary-comprehension/">Do dictionary comprehension</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/do-list-comprehension/">Do list comprehension</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-a-virtual-environment/">Create a virtual environment</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-a-new-file/">Create a new file</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/merge-two-lists/">Merge two lists</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/extract-items-from-two-different-lists-into-one-list/">Extract items from two different lists into one list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/check-if-a-text-file-is-empty/">Check if a text file is empty</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/randomly-select-an-item-from-a-list/">Randomly select an item from a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/generate-a-random-integer/">Generate a random integer</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/break-a-while-loop/">Break a while loop</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-a-pandas-dataframe-from-a-dictionary/">Create a pandas DataFrame from a dictionary</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/create-pandas-dataframe-from-a-list/">Create a pandas DataFrame from a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/get-the-last-itemelement-of-a-list/">Get the last item of a list</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/delete-column-from-a-pandas-dataframe/">Delete a column from a pandas dataframe</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/access-column-pandas-dataframe/">Access a column of a pandas dataframe</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/class/">Create a class</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/requests-object/">Make a webpage request</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/how-do-i-get-the-first-two-characters-of-a-string/">Get the first two characters of a string</a> <br>
+          
+            <a style="color: #e0ac0d" class="p-0" href="https://pythonhow.com/how/iterate-two-lists-same-time/">Loop through two lists at the same time</a> <br>
+          
+		  </div>
+		  
+      </div>
+    </div>
+	  <div class="col-md-4 float-right">
+		  
+			
+			  
+
+
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+        .card-content-container {
+            display: block;
+            width: 100%;
+            overflow: hidden; /* Hide content that goes outside the boundaries */
+        }
+
+        .card-content-container img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Prevent inline spacing issues */
+            margin: 0 auto; /* Center images if desired */
+        }
+
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class=" ">
+    <div class="card my-2">
+        <h5 class="card-header">Recommended Course</h5>
+        <div class="card-body card-content-container">
+        <p class="card-text">  </p><p><b>Python Mega Course: Learn Python in 60 Days, Build 20 Apps<br></b>Learn Python on Udemy completely in 60 days or less by building 20 real-world applications from web development to data science.</p><p><img style="width: 698px;" src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/2a27b29e-eed9-4869-9cc5-d739e7.png"><br></p> <p></p>
+        <div class="col text-center">
+            <a class=" btn btn-danger" href="https://pythonhow.com/python-paid-course/the-python-mega-course/">Buy the Course</a>
+        </div>
+            
+    </div>
+</div>
+</div>
+
+
+
+			
+		  
+	  </div>
+  </div>
+</div>
+
+      <script src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/clipboard.min.js.download"></script>
+
+    <!-- 3. Instantiate clipboard by passing a string selector -->
+    <script>
+
+      var clipboard = new ClipboardJS('.btn');
+
+      clipboard.on('success', function (e) {
+        console.log(e);
+      });
+
+      clipboard.on('error', function (e) {
+        console.log(e);
+      });
+    </script>
+
+
+
+    <!-- Footer -->
+    <footer class="py-3 bg-grey container">
+        <div class="row">
+            <div class="col-md-8">
+                 
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+       
+</style>
+
+
+<script>
+  $('#subscribe').submit(function(e){
+    e.preventDefault();
+    var first_name = $("#first_name").val();
+    if(first_name){
+      var csrfmiddlewaretoken = csrftoken;
+      var email_data = {"first_name":first_name,
+                        "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+      $.ajax({
+        type : 'POST',
+        url :  '/feedback/',
+        data : email_data,
+        success : function(response){
+          alert("We got your feedback! Thanks!");
+        },
+      });
+      return false;
+    }
+    else{
+      alert("Please provide some text!");
+    }
+});
+
+
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+  beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+  }
+})
+</script>
+
+ 
+            </div>
+        </div>
+      <p class="m-0 text-dark text-center">Copyright © PythonHow</p>
+    </footer>
+
+    <script>
+        var elem = document.getElementsByTagName("pre");
+        for (var i = 0; i < elem.length; i++) {
+        elem[i].classList.add("prettyprint");
+        elem[i].style.border = "red";
+    }
+    </script>
+  <script type="module" src="./Here is how to schedule a Python script for execution at a specific time every day in Python_files/v3d52b47920f24c319d37e2661827c42b1" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;60dcb05525fb48d69780f8d9dfca5bd8&quot;,&quot;r&quot;:1}" crossorigin="anonymous"></script>
+
+
+</body></html>

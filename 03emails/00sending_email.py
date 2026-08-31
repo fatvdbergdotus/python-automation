@@ -3,7 +3,7 @@ import time
 
 sender = 'freek23@gmail.com'
 receiver = 'f@vdberg.us'
-password = 'rkhy nqbj seom uune'
+password = 'rkhy nqbj seom uune' # make a password at https://myaccount.google.com/apppasswords
 subject = "This is the subject!"
 
 
@@ -26,7 +26,7 @@ while number<=5:
     time.sleep(20)
     number += 1
 
-# sends an email at a certain time every day
+# sends an email at a certain time every day, forever
 while True:
     if time.strftime("%H:%M") == "16:30":
         yag = yagmail.SMTP(user=sender, password=password)

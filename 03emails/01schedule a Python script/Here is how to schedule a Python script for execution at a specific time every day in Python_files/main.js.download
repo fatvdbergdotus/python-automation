@@ -1,0 +1,178 @@
+$(document).ready(() => {
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != "") {
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) == name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Close the results box when a user clicks outside the box
+  document.addEventListener("click", function (event) {
+    let target = event.target;
+    // close the box if the click is outside it
+    if (target.id !== "search-results") {
+      let box = document.querySelector("#search-results");
+      box.classList.remove("active");
+    }
+  });
+
+  let scheduled_function = false;
+  let delay_by_ms = 700;
+  let searchContainer = $("#search-container");
+  let resultContainer = $("#search-results");
+
+  // If a user presses the arrow keys(up/down) and the results container
+  // if open, then shift focus to the results and select the first result.
+  // Subsequent key presses should either go down or up or back to the search input
+  function startResultsNavigation() {
+    console.log("Results nav started...");
+    var liSelected; // Represents selected link
+    var links = $("#search-results li");
+    $(document).keydown(function (e) {
+      if (e.which == 40 || e.which == 38) {
+        search_input.blur(); // Lose focus on search_input
+        e.preventDefault(); // should prevent scrolling once in focus
+        if (e.which == 40) {
+          if (liSelected) {
+            liSelected.removeClass("selected");
+            next = liSelected.next();
+            if (next.length > 0) {
+              liSelected = next.addClass("selected");
+            } else {
+              liSelected = links.eq(0).addClass("selected");
+            }
+          } else {
+            liSelected = links.eq(0).addClass("selected");
+          }
+        } else if (e.which == 38) {
+          if (liSelected) {
+            liSelected.removeClass("selected");
+            next = liSelected.prev();
+            if (next.length > 0) {
+              liSelected = next.addClass("selected");
+            } else {
+              liSelected = links.last().addClass("selected");
+            }
+          } else {
+            liSelected = links.last().addClass("selected");
+          }
+          liSelected.focus();
+        }
+      } else if (e.which == 13) {
+        // Visit search link inside liSelected
+        if (liSelected) {
+          let a = liSelected.children();
+          if (a.length > 0) {
+            console.log("Enter clicked", liSelected);
+            a[0].click();
+          }
+        }
+      }
+    });
+  }
+
+  // If a user presses enter in the search input, they should be redirected to the home page with the results as the only data
+  // otherwise, proceed with ajax search
+  let search_input = document.querySelector("#search-input");
+  const IGNORE_KEYS = [40, 38];
+
+  search_input.addEventListener("keyup", function (event) {
+    if (!IGNORE_KEYS.includes(event.keyCode)) {
+      // Only react to targets not in the blacklist
+      let queryString = event.target.value.replaceAll(" ", "+");
+      if (queryString.endsWith("+")) {
+        //queryString = queryString.replace("+", "");
+        queryString = queryString.replace(/\ +([^\ +]*)$/, "$1");
+      }
+      // Redirect to the home page when user presses enter
+      if (event.keyCode == 13) {
+        window.location.href = `/?q=${queryString}`;
+      }
+
+      if (event.target.value.length > 1) {
+        if (scheduled_function) {
+          clearTimeout(scheduled_function);
+        }
+        scheduled_function = setTimeout(
+          ajaxSearch,
+          delay_by_ms,
+          "/search",
+          queryString
+        );
+      }
+    }
+  });
+
+  // We store the search response data in an object then we observe it for changes.
+  let search_response = {
+    results: [],
+    error: false,
+  };
+
+  const search_response_handler = {
+    set: function (_, key, value) {
+      if (key == "results") {
+        if (value.length > 0) {
+          // Always Clear container first
+          searchContainer.toggleClass("results");
+          resultContainer.empty();
+          resultContainer.addClass("active");
+          for (let result of value) {
+            let _html = $.parseHTML(result.question)[0];
+            let innerText = _html.innerText || _html.textContent;
+            resultContainer.append(`
+                <li style="height:30px;display:flex;align-items:center;text-decoration:none;color:#212121;" class="bg-light px-2 w-100 rounded">
+                    <a id="${result.slug}" href="/how/${result.slug}" tabindex="0">
+                        <div class="">${innerText}</div>
+                    </a>
+                </li>
+              `);
+          }
+          startResultsNavigation(); // Initialise the navigation function
+        } else {
+          resultContainer.append(
+            `<div class="bg-warning"> No results found!</div>`
+          );
+        }
+      }
+    },
+  };
+
+  let search_response_proxy = new Proxy(
+    search_response,
+    search_response_handler
+  );
+
+  // Debounced search
+  function ajaxSearch(endpoint, queryString) {
+    fetch(`${endpoint}?q=${queryString}`)
+      .then((res) => res.json())
+      .then((data) => {
+        let searchContainer = $("#search-container");
+        searchContainer.toggleClass("results");
+        let resultContainer = $("#search-results");
+        // Always Clear container first
+        resultContainer.empty();
+        resultContainer.toggleClass("active");
+        let results = data.results;
+        if (
+          JSON.stringify(search_response_proxy.results) ==
+          JSON.stringify(results)
+        ) {
+          // No need to do anything
+        } else {
+          search_response_proxy.results = results;
+        }
+      });
+  }
+});
+
