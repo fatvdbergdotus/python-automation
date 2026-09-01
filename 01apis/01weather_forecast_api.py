@@ -6,7 +6,7 @@ lon = 10.99
 
 # get the weather forecast data from the OpenWeatherMap API
 url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={fatvdbergdotus_open_weather_forecast_api}"
-r= requests.get(url)
+r = requests.get(url)
 content = r.json()
 
 # write the weather forecast data to a CSV file
