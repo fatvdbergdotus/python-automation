@@ -1,25 +1,57 @@
 # Python Automation
 
-A collection of practical Python scripts designed to automate repetitive tasks, simplify workflows, and explore what can be achieved with Python.
+A collection of Python scripts for automating files, PDFs, APIs, emails, web browsers, and financial data.
 
-This repository brings together a range of automation projects, from everyday utilities and file processing to system tasks and more advanced scripting. The goal is simple: use Python to eliminate repetitive work and turn manual processes into efficient, reusable tools.
+## 📄 PDF Automation — `00pdf`
 
-The projects demonstrate practical Python programming, automation, scripting, and problem-solving skills, with an emphasis on creating useful solutions for real-world tasks.
+| File                           | Description                                              |
+| ------------------------------ | -------------------------------------------------------- |
+| `00create_pdf.py`              | Creates a PDF document with text and images.             |
+| `01create_pdf_from_excel.py`   | Creates PDF documents from Excel data.                   |
+| `02extract_text_from_pdf.py`   | Extracts text from PDF files.                            |
+| `03extract_tables_from_pdf.py` | Extracts tables from PDFs and exports them to Excel/CSV. |
 
-The repository is continuously evolving as new automation ideas and experiments are added.
+## 🌐 API Automation — `01apis`
 
-### PDF Automation
+| File                            | Description                                                   |
+| ------------------------------- | ------------------------------------------------------------- |
+| `00get_news_from_open_news.py`  | Retrieves news articles through a news API.                   |
+| `01weather_forecast_api.py`     | Retrieves weather forecast data and saves it to CSV.          |
+| `02create_your_own_rest_api.py` | Creates a REST API using Flask.                               |
+| `03grammar_correction.py`       | Checks text and retrieves grammar corrections through an API. |
 
-- `00pdf/00create_pdf.py` — Creates a formatted PDF document with text, images, and structured information using FPDF.
-- `00pdf/01create_pdf_from_excel.py` — Reads Excel data with Pandas and generates a separate PDF document for each row.
-- `00pdf/02extract_text_from_pdf.py` — Extracts and displays text from each page of a PDF using PyMuPDF.
-- `00pdf/03extract_tables_from_pdf.py` — Extracts tables from a PDF and exports them to CSV and Excel using Tabula.
+## 📁 Files & Folders — `02_files_and_folders`
 
-### API Automation
+| File                                         | Description                                        |
+| -------------------------------------------- | -------------------------------------------------- |
+| `00add_prefix_to_all_filenames_in_folder.py` | Adds a prefix to filenames in a folder.            |
+| `01rename_all_files_based_on_folder.py`      | Renames files based on their parent folder.        |
+| `02add_date_created_to_filenames.py`         | Adds the file creation date to filenames.          |
+| `03change_file_extensions.py`                | Changes file extensions in bulk.                   |
+| `04create_empty_files_and_delete_forever.py` | Creates files and demonstrates permanent deletion. |
+| `05zip_archive.py`                           | Creates and extracts ZIP archives.                 |
+| `06search_file_in_computer.py`               | Searches recursively for files on a computer.      |
+| `07delete_files_forever.py`                  | Deletes files programmatically.                    |
 
-- `01apis/00get_news_from_open_news.py` — Retrieves and displays popular news articles by keyword and country using NewsAPI.
-- `01apis/01weather_forecast_api.py` — Retrieves weather forecast data from OpenWeatherMap and saves it to a CSV file.
-- `01apis/02create_your_own_rest_api.py` — Creates a Flask REST API that provides currency exchange rates by scraping X-Rates.
-- `01apis/03grammar_correction.py` — Sends text to the LanguageTool API and reports grammar errors and suggested corrections.
+## 📧 Email Automation — `03emails`
 
-The repository therefore demonstrates a useful range of Python skills: PDF generation, Excel/data processing, PDF extraction, REST APIs, web requests, web scraping, Flask, and API-based text processing.
+| File                                 | Description                                                  |
+| ------------------------------------ | ------------------------------------------------------------ |
+| `00sending_email.py`                 | Sends automated emails using Python.                         |
+| `02send_email_to_csv_contacts.py`    | Sends personalized emails to contacts stored in CSV.         |
+| `03sending_email_with_attachment.py` | Sends HTML emails with file attachments.                     |
+| `01schedule a Python script`         | Examples for scheduling Python scripts to run automatically. |
+
+## 📈 Stock Automation — `04stocks`
+
+| File         | Description                                                                      |
+| ------------ | -------------------------------------------------------------------------------- |
+| `scraper.py` | Uses Selenium to scrape stock-market information from the Zagreb Stock Exchange. |
+
+## 🛠️ Technologies
+
+**Python · Selenium · Pandas · Flask · Requests · FPDF · PyMuPDF · Tabula · Yagmail**
+
+## 👨‍💻 About
+
+Practical Python automation projects covering filesystem operations, APIs, document processing, email automation, web scraping, and financial data.
