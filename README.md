@@ -1,144 +1,46 @@
-# Python Automation
-
-A collection of Python scripts for automating files, PDFs, APIs, emails, web browsers, financial data, and applications.
-
-## Contents
-
-- [📄 PDF Automation](#-pdf-automation--00pdf)
-- [🌐 API Automation](#-api-automation--01apis)
-- [📁 Files & Folders](#-files--folders--02_files_and_folders)
-- [📧 Email Automation](#-email-automation--03emails)
-- [📈 Stock Automation](#-stock-automation--04stocks)
-- [🌍 Browser Automation](#-browser-automation--05browser_automation)
-- [🐍 Modern Python Tools](#-modern-python-tools--06modern_python_tools)
-- [🖥️ Web Apps & Desktop GUI Apps](#-web-apps--desktop-gui-apps--07web_apps_and_desktop_gui_apps)
-
----
-
-## 📄 PDF Automation — `00pdf`
-
-Scripts for creating and processing PDF documents.
-
-| File | Description |
-|---|---|
-| [`00create_pdf.py`](00pdf/00create_pdf.py) | Creates a PDF document with text and images. |
-| [`01create_pdf_from_excel.py`](00pdf/01create_pdf_from_excel.py) | Creates PDF documents from Excel data. |
-| [`02extract_text_from_pdf.py`](00pdf/02extract_text_from_pdf.py) | Extracts text from PDF files. |
-| [`03extract_tables_from_pdf.py`](00pdf/03extract_tables_from_pdf.py) | Extracts tables from PDFs and exports them to Excel/CSV. |
-
----
-
-## 🌐 API Automation — `01apis`
-
-Examples of interacting with web APIs and creating REST APIs.
-
-| File | Description |
-|---|---|
-| [`00get_news_from_open_news.py`](01apis/00get_news_from_open_news.py) | Retrieves news articles through a news API. |
-| [`01weather_forecast_api.py`](01apis/01weather_forecast_api.py) | Retrieves weather forecast data and saves it to CSV. |
-| [`02create_your_own_rest_api.py`](01apis/02create_your_own_rest_api.py) | Creates a REST API using Flask. |
-| [`03grammar_correction.py`](01apis/03grammar_correction.py) | Checks text and retrieves grammar corrections through an API. |
-
----
-
-## 📁 Files & Folders — `02_files_and_folders`
-
-Scripts for automating common filesystem operations.
-
-| File | Description |
-|---|---|
-| [`00add_prefix_to_all_filenames_in_folder.py`](02_files_and_folders/00add_prefix_to_all_filenames_in_folder.py) | Adds a prefix to filenames in a folder. |
-| [`01rename_all_files_based_on_folder.py`](02_files_and_folders/01rename_all_files_based_on_folder.py) | Renames files based on their parent folder. |
-| [`02add_date_created_to_filenames.py`](02_files_and_folders/02add_date_created_to_filenames.py) | Adds the file creation date to filenames. |
-| [`03change_file_extensions.py`](02_files_and_folders/03change_file_extensions.py) | Changes file extensions in bulk. |
-| [`04create_empty_files_and_delete_forever.py`](02_files_and_folders/04create_empty_files_and_delete_forever.py) | Creates files and demonstrates permanent deletion. |
-| [`05zip_archive.py`](02_files_and_folders/05zip_archive.py) | Creates and extracts ZIP archives. |
-| [`06search_file_in_computer.py`](02_files_and_folders/06search_file_in_computer.py) | Searches recursively for files on a computer. |
-| [`07delete_files_forever.py`](02_files_and_folders/07delete_files_forever.py) | Deletes files programmatically. |
-
-> **Warning:** Some scripts permanently delete files. Use them carefully.
-
----
-
-## 📧 Email Automation — `03emails`
-
-Scripts for automating email-related tasks.
-
-| File | Description |
-|---|---|
-| [`00sending_email.py`](03emails/00sending_email.py) | Sends automated emails using Python. |
-| [`02send_email_to_csv_contacts.py`](03emails/02send_email_to_csv_contacts.py) | Sends personalized emails to contacts stored in CSV. |
-| [`03sending_email_with_attachment.py`](03emails/03sending_email_with_attachment.py) | Sends HTML emails with file attachments. |
-| [`01schedule a Python script`](03emails/01schedule%20a%20Python%20script/) | Examples for scheduling Python scripts to run automatically. |
-
----
-
-## 📈 Stock Automation — `04stocks`
-
-Scripts for retrieving financial and stock-market information.
-
-| File | Description |
-|---|---|
-| [`scraper.py`](04stocks/scraper.py) | Uses Selenium to scrape stock-market information from the Zagreb Stock Exchange. |
-
----
-
 ## 🌍 Browser Automation — `05browser_automation`
 
-Python scripts for automating web browsers.
+Python scripts for automating web browsers, scraping websites, and downloading data.
 
-| Folder / File | Description |
+| File | Description |
 |---|---|
-| [`05browser_automation`](05browser_automation/) | Browser automation examples using Python and Selenium. |
+| [`00scraping_simple_text.py`](05browser_automation/00scraping_simple_text.py) | Simple browser-based text scraping. |
+| [`01login_scrape_logout.py`](05browser_automation/01login_scrape_logout.py) | Logs into a website, scrapes information, and logs out. |
+| [`02download_stock_data.py`](05browser_automation/02download_stock_data.py) | Downloads stock-market data using browser automation. |
+| [`03scrape_currency_rate_beautiful_soup.py`](05browser_automation/03scrape_currency_rate_beautiful_soup.py) | Scrapes currency exchange rates using Beautiful Soup. |
+| [`products.txt`](05browser_automation/products.txt) | Product data used by the browser automation examples. |
+| [`stock_data.csv`](05browser_automation/stock_data.csv) | Stock data generated by the automation scripts. |
 
 ---
 
 ## 🐍 Modern Python Tools — `06modern_python_tools`
 
-Examples demonstrating modern Python development tools and techniques.
+Examples of modern Python tools for creating websites and data applications.
 
-| Folder / File | Description |
+| File | Description |
 |---|---|
-| [`06modern_python_tools`](06modern_python_tools/) | Examples using modern Python tools and development techniques. |
+| [`00create_and_publish_website.py`](06modern_python_tools/00create_and_publish_website.py) | Creates and publishes a website using Python. |
+| [`01streamlit.md`](06modern_python_tools/01streamlit.md) | Notes and examples for building applications with Streamlit. |
 
 ---
 
 ## 🖥️ Web Apps & Desktop GUI Apps — `07web_apps_and_desktop_gui_apps`
 
-Examples of building applications with Python.
+Examples of Python web applications and desktop GUI applications.
 
-| Folder / File | Description |
+| File | Description |
 |---|---|
-| [`07web_apps_and_desktop_gui_apps`](07web_apps_and_desktop_gui_apps/) | Python web applications and desktop GUI applications. |
+| [`00volume_calculator_flask.py`](07web_apps_and_desktop_gui_apps/00volume_calculator_flask.py) | Simple volume calculator implemented as a Flask web application. |
+| [`01sentence_builder_gui_app_pyqt6.py`](07web_apps_and_desktop_gui_apps/01sentence_builder_gui_app_pyqt6.py) | Sentence-builder desktop GUI using PyQt6. |
+| [`02currency_converter_app_pyqt6.py`](07web_apps_and_desktop_gui_apps/02currency_converter_app_pyqt6.py) | Currency-converter desktop application using PyQt6. |
+| [`03advanced_gui_layout.py`](07web_apps_and_desktop_gui_apps/03advanced_gui_layout.py) | Example of an advanced PyQt6 GUI layout. |
+| [`04file_destroyer_gui_pyqt6.py`](07web_apps_and_desktop_gui_apps/04file_destroyer_gui_pyqt6.py) | PyQt6 GUI for selecting and deleting files. |
+| [`05english_dictionary_gui_app.py`](07web_apps_and_desktop_gui_apps/05english_dictionary_gui_app.py) | English dictionary GUI application. |
+| [`templates/index.html`](07web_apps_and_desktop_gui_apps/templates/index.html) | HTML template used by the Flask web application. |
 
 ---
 
-## 🛠️ Technologies
-
-- Python
-- Selenium
-- Pandas
-- Flask
-- Requests
-- FPDF
-- PyMuPDF
-- Tabula
-- Yagmail
-- Web scraping
-- REST APIs
-- JSON
-- CSV
-- Excel
-- PDF processing
-- Filesystem automation
-- Email automation
-- Browser automation
-- Desktop GUI development
-- Web application development
-
----
-
-## 📂 Project Structure
+## 📂 Complete Project Structure
 
 ```text
 python-automation/
@@ -175,7 +77,23 @@ python-automation/
 │   └── scraper.py
 │
 ├── 05browser_automation/
+│   ├── 00scraping_simple_text.py
+│   ├── 01login_scrape_logout.py
+│   ├── 02download_stock_data.py
+│   ├── 03scrape_currency_rate_beautiful_soup.py
+│   ├── products.txt
+│   └── stock_data.csv
 │
 ├── 06modern_python_tools/
+│   ├── 00create_and_publish_website.py
+│   └── 01streamlit.md
 │
 └── 07web_apps_and_desktop_gui_apps/
+    ├── templates/
+    │   └── index.html
+    ├── 00volume_calculator_flask.py
+    ├── 01sentence_builder_gui_app_pyqt6.py
+    ├── 02currency_converter_app_pyqt6.py
+    ├── 03advanced_gui_layout.py
+    ├── 04file_destroyer_gui_pyqt6.py
+    └── 05english_dictionary_gui_app.py
