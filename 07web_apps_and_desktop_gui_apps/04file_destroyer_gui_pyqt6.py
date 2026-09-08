@@ -51,4 +51,3 @@ layout.addWidget(filenames_label)
 
 window.show()
 app.exec()
-
