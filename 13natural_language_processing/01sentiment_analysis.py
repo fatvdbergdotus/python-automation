@@ -5,7 +5,7 @@ nltk.download('vader_lexicon')
 nltk.download('twitter_samples')
 
 # function to get sentiment scores for a given text
-def get_sentiment_scores(text: str) -> str:
+def get_sentiment_scores(text: str) -> tuple[str, str]:
     sia = SentimentIntensityAnalyzer()
     scores = sia.polarity_scores(text)
     if scores['compound'] >= 0.05:
